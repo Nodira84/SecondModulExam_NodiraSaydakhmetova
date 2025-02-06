@@ -4,6 +4,18 @@ namespace G10ExamSaydakhmetova.Services
 {
     public interface IBookService
     {
+        Guid Addbook(BookDto book);
+
+        void DeleteBook(Guid id);
+
+        void UpdateBook(BookDto book);
+
+        List<BookDto> GetAllBooks();
+
+        BookDto GetBookById(Guid id);
+
+
+
         List<BookDto>GetAllBooksByAuthor(string author);
 
         BookDto GetTopRatedBook();

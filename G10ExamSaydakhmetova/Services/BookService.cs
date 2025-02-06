@@ -16,18 +16,24 @@ public class BookService : IBookService
         _bookRepository = new BookRepository();
     }
 
+    public Guid Addbook(BookDto bookDto);
+    var book = ConvertToBookEntity(bookDto);
 
-    private Book ConvertToEntity(BookCreateDto bookCreateDto)
+
+
+
+
+    private Book ConvertToBookEntity(BookDto bookDto)
     {
-        return new Book
+        return new Book()
         {
-            Id = Guid.NewGuid(),
-            Title = bookCreateDto.Title,
-            Author = bookCreateDto.Author,
-            Pages = bookCreateDto.Pages,
-            Rating = bookCreateDto.Rating,
-            NumberOfCopiesSold = bookCreateDto.NumberOfCopiesSold,
-            PublishedDate = bookCreateDto.PublishedDate
+            Id = bookDto.Id ?? Guid.NewGuid(),
+            Title = bookDto.Title,
+            Author = bookDto.Author,
+            Pages = bookDto.Pages,
+            Rating = bookDto.Rating,
+            NumberOfCopiesSold = bookDto.NumberOfCopiesSold,
+            PublishedDate = bookDto.PublishedDate
         };
     }
 
